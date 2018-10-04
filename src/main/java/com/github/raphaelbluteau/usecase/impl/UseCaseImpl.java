@@ -4,8 +4,10 @@ import com.github.raphaelbluteau.enums.DishType;
 import com.github.raphaelbluteau.enums.Period;
 import com.github.raphaelbluteau.exceptions.NotApplicableDish;
 import com.github.raphaelbluteau.gateway.DishGateway;
+import com.github.raphaelbluteau.gateway.impl.DishGatewayImpl;
 import com.github.raphaelbluteau.usecase.UseCase;
 import com.github.raphaelbluteau.usecase.converter.UseCaseConverter;
+import com.github.raphaelbluteau.usecase.converter.impl.UseCaseConverterImpl;
 import com.github.raphaelbluteau.usecase.data.UseCaseDto;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,13 +20,12 @@ import java.util.stream.Collectors;
 
 public class UseCaseImpl implements UseCase {
 
-  private DishGateway gateway;
-  private UseCaseConverter converter;
+  private final DishGateway gateway;
+  private final UseCaseConverter converter;
 
-  public UseCaseImpl(DishGateway gateway,
-      UseCaseConverter converter) {
-    this.gateway = gateway;
-    this.converter = converter;
+  public UseCaseImpl() {
+    this.gateway = new DishGatewayImpl();
+    this.converter = new UseCaseConverterImpl();
   }
 
   @Override
