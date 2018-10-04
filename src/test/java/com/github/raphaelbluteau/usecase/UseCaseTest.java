@@ -3,10 +3,6 @@ package com.github.raphaelbluteau.usecase;
 import com.github.raphaelbluteau.enums.DishType;
 import com.github.raphaelbluteau.enums.Period;
 import com.github.raphaelbluteau.exceptions.NotApplicableDish;
-import com.github.raphaelbluteau.gateway.DishGateway;
-import com.github.raphaelbluteau.gateway.impl.DishGatewayImpl;
-import com.github.raphaelbluteau.usecase.converter.UseCaseConverter;
-import com.github.raphaelbluteau.usecase.converter.impl.UseCaseConverterImpl;
 import com.github.raphaelbluteau.usecase.data.UseCaseDto;
 import com.github.raphaelbluteau.usecase.impl.UseCaseImpl;
 import java.util.Arrays;
@@ -27,9 +23,7 @@ public class UseCaseTest {
   public void setUp() {
 
     typesList = Arrays.asList(DishType.ENTREE, DishType.SIDE, DishType.DRINK, DishType.DESSERT);
-    DishGateway gateway = new DishGatewayImpl();
-    UseCaseConverter converter = new UseCaseConverterImpl();
-    useCase = new UseCaseImpl(gateway, converter);
+    useCase = new UseCaseImpl();
   }
 
   @Test
